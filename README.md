@@ -13,7 +13,7 @@ Gebruik packages om jouw code gestructureerd te houden. Dit geldt zowel voor de 
 Unit testen
 -----------
 
-Voor het unit testen kun je gebruik maken van het framework JUnit. IntelliJ kan de jar zelf toevoegen, anders kun je de jar [downloaden](https://github.com/junit-team/junit/wiki/Download-and-Install) en toevoegen als dependency.
+Voor het unit testen kun je gebruik maken van het framework JUnit. Maven kan de jar downloaden, als dat niet lukt kun je de jars [downloaden](https://github.com/junit-team/junit/wiki/Download-and-Install) en toevoegen als dependency.
 
 
 .gitignore
