@@ -1,7 +1,7 @@
 Mancala
 =======
 
-Dit is de basisopzet voor jouw Mancala-implementatie.
+Dit is de basisopzet voor jouw Mancala-implementatie. Om het project goed te openen, zul je het bestaande projectbestand (pom.xml) moeten importeren in je IDE. Dit is een file die het project beschrijft volgens de Apache Maven structuur. Voor Eclipse heb je de m2e-plugin nodig.
 
 Mapstructuur
 ------------
