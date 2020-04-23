@@ -18,27 +18,27 @@ public class Kalaha extends BoardElement {
 		return this;
 	}
 	
-	protected void emptyOpposite(int counter) {
-		this.Neighbour.emptyOpposite(counter, this);
+	protected void EmptyOpposite(int counter) {
+		this.Neighbour.EmptyOpposite(counter, this);
 	}
 	
-	protected void emptyOpposite(int counter, Kalaha target) {
+	protected void EmptyOpposite(int counter, Kalaha target) {
 		System.out.println("Error, opposite of bowl could not be found.");
 	}
 	
-	//protected void addStoneAndPass(int stones) {
-	//	if(this.Owner.getTurn()) {
-	//		stones--;
-	//		this.Stones++;
-	//		if (stones > 0) {
-	//			this.Neighbour.addStoneAndPass(stones);
-	//		} else {
-	//			System.out.println("You can move again, " + this.Owner.getName());
-	//		}
-	//	} else {
-	//		this.Neighbour.addStoneAndPass(stones);
-	//	}
-	//}
+	protected void AddStoneAndPass(int stones) {
+		if(this.Owner.getTurn()) {
+			stones--;
+			this.Stones++;
+			if (stones > 0) {
+				this.Neighbour.AddStoneAndPass(stones);
+			} else {
+				System.out.println("You can move again, " + this.Owner.getName());
+			}
+		} else {
+			this.Neighbour.AddStoneAndPass(stones);
+		}
+	}
 	
 	//protected void AddOpposites(int stones) {
 	//	this.Stones += stones;

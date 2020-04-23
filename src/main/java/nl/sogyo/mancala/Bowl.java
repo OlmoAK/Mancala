@@ -59,19 +59,19 @@ public class Bowl extends BoardElement {
 		return this.Neighbour.getKalaha();
 	}
 	
-	protected void emptyOpposite(int counter) {
+	protected void EmptyOpposite(int counter) {
 		counter++;
-		this.Neighbour.emptyOpposite(counter);
+		this.Neighbour.EmptyOpposite(counter);
 	}
 	
-	protected void emptyOpposite(int counter, Kalaha target) {
+	protected void EmptyOpposite(int counter, Kalaha target) {
 		if (counter == 0) {
 			int stones = this.Stones + 1;
 			this.Stones = 0;
 			//target.AddOpposites(stones);
 		} else {
 			counter--;
-			this.Neighbour.emptyOpposite(counter, target);
+			this.Neighbour.EmptyOpposite(counter, target);
 		}
 	}
 	
@@ -87,24 +87,24 @@ public class Bowl extends BoardElement {
 		if (this.Stones > 0) {
 			int stones = this.Stones;
 			this.Stones = 0;
-			//this.Neighbour.addStoneAndPass(stones);
+			this.Neighbour.AddStoneAndPass(stones);
 		} else {
 			System.out.println("This bowl is empty, please pick one of your bowls with some stones in it to make a move.");
 		}
 	}
 	
-	//protected void addStoneAndPass(int stones) {
-	//	stones--;
-	//	this.Stones++;
-	//	if (stones > 0) {
-	//		this.Neighbour.addStoneAndPass(stones);
-	//	} else if (this.Stones == 1 && this.Owner.getTurn()) {
-	//		this.emptyOpposite(0);
-	//		this.Stones = 0;
-	//	} else {
+	protected void AddStoneAndPass(int stones) {
+		stones--;
+		this.Stones++;
+		if (stones > 0) {
+			this.Neighbour.AddStoneAndPass(stones);
+		} else if (this.Stones == 1 && this.Owner.getTurn()) {
+			this.EmptyOpposite(0);
+			this.Stones = 0;
+		} else {
 	//		this.Owner.EndTurn();
-	//	}
-	//}
+		}
+	}
 	
 	//public boolean EndGameCheck() {
 	//	if (this.Stones > 0) {

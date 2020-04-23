@@ -21,11 +21,11 @@ public abstract class BoardElement{
 	
 	abstract Kalaha getKalaha();
 	
-	abstract void emptyOpposite(int counter);
+	abstract void EmptyOpposite(int counter);
 	
-	abstract void emptyOpposite(int counter, Kalaha target);
+	abstract void EmptyOpposite(int counter, Kalaha target);
 	
-	//abstract void addStoneAndPass(int stones);
+	abstract void AddStoneAndPass(int stones);
 	
 	//abstract boolean EndGameCheck();
 }
