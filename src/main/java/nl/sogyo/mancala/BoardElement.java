@@ -19,13 +19,21 @@ public abstract class BoardElement{
 		return this.Neighbour;
 	}
 	
+	public BoardElement getNeighbour(int steps) {
+		BoardElement neighbour = this;
+		for (int i = 0; i < steps; i++) {
+			neighbour = neighbour.Neighbour;
+		}
+		return neighbour;
+	}
+	
 	abstract Kalaha getKalaha();
 	
-	abstract void EmptyOpposite(int counter);
+	protected abstract void EmptyOpposite(int counter);
 	
-	abstract void EmptyOpposite(int counter, Kalaha target);
+	protected abstract void EmptyOpposite(int counter, Kalaha target);
 	
-	abstract void AddStoneAndPass(int stones);
+	protected abstract void AddStoneAndPass(int stones);
 	
-	//abstract boolean EndGameCheck();
+	//protected abstract boolean EndGameCheck();
 }
