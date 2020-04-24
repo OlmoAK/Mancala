@@ -14,8 +14,12 @@ public class Kalaha extends BoardElement {
 		this.Neighbour = new Bowl(owner.getOpponent(), stones, firstBowl, counter);
 	}
 	
-	protected Kalaha getKalaha() {
+	protected Kalaha getOwnerKalaha() {
 		return this;
+	}
+	
+	protected Kalaha getOpponentKalaha() {
+		return this.Neighbour.getOwnerKalaha();
 	}
 	
 	protected void EmptyOpposite(int counter) {

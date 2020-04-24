@@ -24,5 +24,10 @@ public class Mancala {
 		System.out.println(kahala2.getNeighbour() == bowl1);
 		System.out.println(player2.getOpponent() == player1);
 		
+		System.out.println(bowl11 == (Bowl) bowl1.getNeighbour(11));
+		
+		Bowl bowl = new Bowl("Player 1", "Player 2", new int[] {1,0});
+		bowl.MakeMove();
+		System.out.println(bowl.getNeighbour(11).getStones());
 	}
 }

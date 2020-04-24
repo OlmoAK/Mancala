@@ -27,7 +27,9 @@ public abstract class BoardElement{
 		return neighbour;
 	}
 	
-	abstract Kalaha getKalaha();
+	abstract Kalaha getOwnerKalaha();
+	
+	abstract Kalaha getOpponentKalaha();
 	
 	protected abstract void EmptyOpposite(int counter);
 	

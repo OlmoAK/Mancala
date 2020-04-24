@@ -48,4 +48,11 @@ public class BowlTest {
 		assertEquals(0, bowl6.getStones() - test);
 	}
 	
+	@Test
+	public void EmptyOppositesTest() {
+		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {1,0});
+		bowl1.MakeMove();
+		Bowl bowl11 = (Bowl) bowl1.getNeighbour(11);
+		assertEquals(0, bowl11.getStones());
+	}
 }

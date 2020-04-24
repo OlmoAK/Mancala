@@ -55,8 +55,12 @@ public class Bowl extends BoardElement {
 		}
 	}
 	
-	protected Kalaha getKalaha() {
-		return this.Neighbour.getKalaha();
+	protected Kalaha getOwnerKalaha() {
+		return this.Neighbour.getOwnerKalaha();
+	}
+	
+	protected Kalaha getOpponentKalaha() {
+		return this.Neighbour.getOpponentKalaha();
 	}
 	
 	protected void EmptyOpposite(int counter) {
@@ -65,12 +69,12 @@ public class Bowl extends BoardElement {
 	}
 	
 	protected void EmptyOpposite(int counter, Kalaha target) {
+		counter--;
 		if (counter == 0) {
 			int stones = this.Stones + 1;
 			this.Stones = 0;
 			//target.AddOpposites(stones);
 		} else {
-			counter--;
 			this.Neighbour.EmptyOpposite(counter, target);
 		}
 	}
