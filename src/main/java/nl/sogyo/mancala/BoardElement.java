@@ -31,11 +31,9 @@ public abstract class BoardElement{
 	
 	abstract Kalaha getOpponentKalaha();
 	
-	protected abstract void EmptyOpposite(int counter);
-	
-	protected abstract void EmptyOpposite(int counter, Kalaha target);
+	protected abstract Bowl getOpposite(int counter, boolean tag);
 	
 	protected abstract void AddStoneAndPass(int stones);
 	
-	//protected abstract boolean EndGameCheck();
+	protected abstract boolean EndGameCheck();
 }

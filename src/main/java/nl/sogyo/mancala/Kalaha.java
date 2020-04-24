@@ -22,12 +22,8 @@ public class Kalaha extends BoardElement {
 		return this.Neighbour.getOwnerKalaha();
 	}
 	
-	protected void EmptyOpposite(int counter) {
-		this.Neighbour.EmptyOpposite(counter, this);
-	}
-	
-	protected void EmptyOpposite(int counter, Kalaha target) {
-		System.out.println("Error, opposite of bowl could not be found.");
+	protected Bowl getOpposite(int counter, boolean tag) {
+		return this.Neighbour.getOpposite(counter, !tag);
 	}
 	
 	protected void AddStoneAndPass(int stones) {
@@ -37,19 +33,36 @@ public class Kalaha extends BoardElement {
 			if (stones > 0) {
 				this.Neighbour.AddStoneAndPass(stones);
 			} else {
-				System.out.println("You can move again, " + this.Owner.getName());
+				this.MoveAgain();
 			}
 		} else {
 			this.Neighbour.AddStoneAndPass(stones);
 		}
 	}
 	
-	//protected void AddOpposites(int stones) {
-	//	this.Stones += stones;
-	//	this.Owner.EndTurn();
-	//}
+	private void MoveAgain() {
+		if (this.Neighbour.EndGameCheck() || this.getOpponentKalaha().getNeighbour().EndGameCheck()) {
+			this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones());
+		} else {
+			System.out.println("You can move again, " + this.Owner.getName());
+		}
+	}
 	
-	//public boolean EndGameCheck() {
-	//	return true;
-	//}
+	protected void AddOpposites(int stones) {
+		this.Stones += stones;
+		this.EndTurn();
+	}
+	
+	protected void EndTurn() {
+		if (this.Neighbour.EndGameCheck() || this.getOpponentKalaha().getNeighbour().EndGameCheck()) {
+			this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones());
+		} else {
+			this.Owner.ChangeTurn();
+		}
+	}
+	
+	protected boolean EndGameCheck() {
+		return true;
+	}
+	
 }

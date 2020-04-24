@@ -31,38 +31,32 @@ public class Player {
 		this.Opponent.Opponent = this;
 	}
 	
-	//public void EndTurn() {
-	//	if(this.FirstBowl.EndGameCheck()) {
-	//		this.DeclareWinner();
-	//	} else {
-	//		this.Turn ^= true;
-	//		this.Opponent.ChangeTurn();
-	//	}
-	//}
+	public void ChangeTurn() {
+		this.Turn ^= true;
+		this.Opponent.ChangeTurn(this.Turn);
+	}
 	
-	//private void ChangeTurn() {
-	//	this.Turn ^= true;
-	//	if(this.FirstBowl.EndGameCheck()) {
-	//		this.DeclareWinner();
-	//	} else if (this.Turn && !this.Opponent.Turn) {
-	//		System.out.println("It is now " + this.getName() + "'s turn.");
-	//	} else if (this.Opponent.Turn && !this.Turn) {
-	//		System.out.println("It is now " + this.Opponent.getName() + "'s turn.");
-	//	} else {
-	//		throw new IllegalStateException("Both Players were initalized to the same turn states, while theu need to be opposite!");
-	//	}
-	//}
+	private void ChangeTurn(boolean opponentsTurn) {
+		this.Turn ^= true;
+		if (this.Turn && !opponentsTurn) {
+			System.out.println("It is now " + this.getName() + "'s turn.");
+		} else if (!this.Turn && opponentsTurn) {
+			System.out.println("It is now " + this.Opponent.getName() + "'s turn.");
+		} else {
+			throw new IllegalStateException("Both Players were initialized to the same turn states, while they need to be opposite!");
+		}
+	}
 	
-	//private void DeclareWinner() {
-	//	int myPoints = this.MyKalaha.getStones();
-	//	int opponentPoints = this.Opponent.MyKalaha.getStones();
-	//	System.out.print("The game has ended! The score is " + myPoints + " - " + opponentPoints + ". ");
-	//	if (myPoints > opponentPoints) {
-	//		System.out.println("Congratulations " + this.getName() + ", you've won!");
-	//	} else if (myPoints < opponentPoints) {
-	//		System.out.println("Congratulations " + this.Opponent.getName() + ", you've won!");
-	//	} else {
-	//		System.out.println("It's a draw!");
-	//	}
-	//}
+	public void DeclareWinner(int myPoints, int opponentPoints) {
+		System.out.print("The game has ended! The score is " + myPoints + " - " + opponentPoints + ". ");
+		if (myPoints > opponentPoints) {
+			System.out.println("Congratulations " + this.getName() + ", you've won!");
+		} else if (myPoints < opponentPoints) {
+			System.out.println("Congratulations " + this.Opponent.getName() + ", you've won!");
+		} else {
+			System.out.println("It's a draw!");
+		}
+		this.Turn ^= true; //Here to allow @Tests to check that the game has indeed ended.
+	}
+	
 }

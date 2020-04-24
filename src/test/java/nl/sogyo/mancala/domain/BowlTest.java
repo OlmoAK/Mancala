@@ -55,4 +55,5 @@ public class BowlTest {
 		Bowl bowl11 = (Bowl) bowl1.getNeighbour(11);
 		assertEquals(0, bowl11.getStones());
 	}
+	
 }

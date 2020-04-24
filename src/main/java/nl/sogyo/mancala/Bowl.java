@@ -63,19 +63,16 @@ public class Bowl extends BoardElement {
 		return this.Neighbour.getOpponentKalaha();
 	}
 	
-	protected void EmptyOpposite(int counter) {
-		counter++;
-		this.Neighbour.EmptyOpposite(counter);
-	}
-	
-	protected void EmptyOpposite(int counter, Kalaha target) {
-		counter--;
-		if (counter == 0) {
-			int stones = this.Stones + 1;
-			this.Stones = 0;
-			//target.AddOpposites(stones);
+	protected Bowl getOpposite(int counter, boolean tag) {
+		if (tag) {
+			counter--;
 		} else {
-			this.Neighbour.EmptyOpposite(counter, target);
+			counter++;
+		}
+		if (counter > 0) {
+			return this.Neighbour.getOpposite(counter, tag);
+		} else {
+			return this;
 		}
 	}
 	
@@ -87,13 +84,13 @@ public class Bowl extends BoardElement {
 		}
 	}
 	
-	public void EmptyAndPass() {
+	protected void EmptyAndPass() {
 		if (this.Stones > 0) {
 			int stones = this.Stones;
 			this.Stones = 0;
 			this.Neighbour.AddStoneAndPass(stones);
 		} else {
-			System.out.println("This bowl is empty, please pick one of your bowls with some stones in it to make a move.");
+			System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
 		}
 	}
 	
@@ -102,19 +99,25 @@ public class Bowl extends BoardElement {
 		this.Stones++;
 		if (stones > 0) {
 			this.Neighbour.AddStoneAndPass(stones);
-		} else if (this.Stones == 1 && this.Owner.getTurn()) {
-			this.EmptyOpposite(0);
+		} else if (this.Stones == 1 && this.Owner.getTurn() && this.getOpposite(0, false).Stones > 0) {
 			this.Stones = 0;
+			this.getOpposite(0, false).EmptyOpposite(this.getOwnerKalaha());
 		} else {
-	//		this.Owner.EndTurn();
+			this.getOwnerKalaha().EndTurn();
 		}
 	}
 	
-	//public boolean EndGameCheck() {
-	//	if (this.Stones > 0) {
-	//		return false;
-	//	} else {
-	//		return this.Neighbour.EndGameCheck();
-	//	}
-	//}
+	protected void EmptyOpposite(Kalaha target) {
+		int stones = this.Stones + 1;
+		this.Stones = 0;
+		target.AddOpposites(stones);
+	}
+	
+	protected boolean EndGameCheck() {
+		if (this.Stones > 0) {
+			return false;
+		} else {
+			return this.Neighbour.EndGameCheck();
+		}
+	}
 }
