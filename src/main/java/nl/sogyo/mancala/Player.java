@@ -47,16 +47,19 @@ public class Player {
 		}
 	}
 	
-	public void DeclareWinner(int myPoints, int opponentPoints) {
-		System.out.print("The game has ended! The score is " + myPoints + " - " + opponentPoints + ". ");
+	public String DeclareWinner(int myPoints, int opponentPoints) {
+		this.Turn = false; //This prevents further moves being made and allows @Tests to check that the game has indeed ended.
+		this.Opponent.Turn = false;
 		if (myPoints > opponentPoints) {
-			System.out.println("Congratulations " + this.getName() + ", you've won!");
+			return ("The game has ended! The score is " + myPoints + " - " + opponentPoints + ". Congratulations " + this.getName() + ", you've won!");
 		} else if (myPoints < opponentPoints) {
-			System.out.println("Congratulations " + this.Opponent.getName() + ", you've won!");
+			return ("The game has ended! The score is " + myPoints + " - " + opponentPoints + ". Congratulations " + this.Opponent.getName() + ", you've won!");
 		} else {
-			System.out.println("It's a draw!");
+			return ("The game has ended! The score is " + myPoints + " - " + opponentPoints + ". It's a draw!");
 		}
-		this.Turn ^= true; //Here to allow @Tests to check that the game has indeed ended.
 	}
 	
+	public boolean GameOver() {
+		return !(this.Turn || this.Opponent.Turn);
+	}
 }

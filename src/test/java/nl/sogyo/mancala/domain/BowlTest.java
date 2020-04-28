@@ -16,6 +16,15 @@ public class BowlTest {
 	}
 	
 	@Test
+	public void MakeMoveAfterGameEndTest() {
+		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {});
+		int test = bowl1.getStones();
+		System.out.println(bowl1.getOwner().DeclareWinner(bowl1.getNeighbour(6).getStones(), bowl1.getNeighbour(13).getStones()));
+		bowl1.MakeMove();
+		assertEquals(test, bowl1.getStones());
+	}
+	
+	@Test
 	public void TurnCheckTest() {
 		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {});
 		Bowl bowl7 = (Bowl) bowl1.getNeighbour(7);
@@ -52,8 +61,7 @@ public class BowlTest {
 	public void EmptyOppositesTest() {
 		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {1,0});
 		bowl1.MakeMove();
-		Bowl bowl11 = (Bowl) bowl1.getNeighbour(11);
-		assertEquals(0, bowl11.getStones());
+		assertEquals(0, bowl1.getNeighbour(11).getStones());
 	}
 	
 }

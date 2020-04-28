@@ -28,21 +28,25 @@ public class Kalaha extends BoardElement {
 	
 	protected void AddStoneAndPass(int stones) {
 		if(this.Owner.getTurn()) {
-			stones--;
-			this.Stones++;
-			if (stones > 0) {
-				this.Neighbour.AddStoneAndPass(stones);
-			} else {
-				this.MoveAgain();
-			}
+			MoveAgainCheck(stones);
 		} else {
 			this.Neighbour.AddStoneAndPass(stones);
 		}
 	}
 	
+	private void MoveAgainCheck(int stones) {
+		stones--;
+		this.Stones++;
+		if (stones > 0) {
+			this.Neighbour.AddStoneAndPass(stones);
+		} else {
+			this.MoveAgain();
+		}
+	}
+	
 	private void MoveAgain() {
 		if (this.Neighbour.EndGameCheck() || this.getOpponentKalaha().getNeighbour().EndGameCheck()) {
-			this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones());
+			System.out.println(this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones()));
 		} else {
 			System.out.println("You can move again, " + this.Owner.getName());
 		}
@@ -55,7 +59,7 @@ public class Kalaha extends BoardElement {
 	
 	protected void EndTurn() {
 		if (this.Neighbour.EndGameCheck() || this.getOpponentKalaha().getNeighbour().EndGameCheck()) {
-			this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones());
+			System.out.println(this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones()));
 		} else {
 			this.Owner.ChangeTurn();
 		}
@@ -65,4 +69,21 @@ public class Kalaha extends BoardElement {
 		return true;
 	}
 	
+	public Player getWinner() {
+		if (this.Owner.GameOver()) {
+			return this.ReturnWinner();
+		} else {
+			return null;
+		}
+	}
+	
+	protected Player ReturnWinner() {
+		if (this.getStones() > this.getOpponentKalaha().getStones()) {
+			return this.Owner;
+		} else if (this.getStones() < this.getOpponentKalaha().getStones()) {
+			return this.Owner.getOpponent();
+		} else {
+			return null;
+		}
+	}
 }

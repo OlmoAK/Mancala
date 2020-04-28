@@ -12,7 +12,7 @@ public class PlayerTest {
 	public void ChangeTurnTest() {
 		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {});
 		bowl1.getOwner().ChangeTurn();
-		assertEquals(false, bowl1.getOwner().getTurn());
+		assertEquals(true, bowl1.getOwner().getOpponent().getTurn());
 	}
 	
 	@Test
@@ -21,7 +21,8 @@ public class PlayerTest {
 		Bowl bowl7 = (Bowl) bowl1.getNeighbour(7);
 		bowl1.getOwner().ChangeTurn();
 		bowl7.MakeMove();
-		assertEquals(bowl1.getOwner().getTurn(), bowl1.getNeighbour(7).getOwner().getTurn());
+		assertEquals(true, bowl1.getOwner().GameOver());
+		assertEquals(bowl7.getOwner(), bowl7.getWinner());
 	}
 	
 	@Test
@@ -32,6 +33,7 @@ public class PlayerTest {
 		bowl6.MakeMove();
 		bowl1.MakeMove();
 		bowl12.MakeMove();
-		assertEquals(bowl1.getOwner().getTurn(), bowl1.getNeighbour(7).getOwner().getTurn());
+		assertEquals(true, bowl1.getOwner().GameOver());
+		assertEquals(null, bowl1.getWinner());
 	}
 }

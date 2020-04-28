@@ -36,4 +36,6 @@ public abstract class BoardElement{
 	protected abstract void AddStoneAndPass(int stones);
 	
 	protected abstract boolean EndGameCheck();
+	
+	abstract Player getWinner();
 }
