@@ -2,28 +2,6 @@ package nl.sogyo.mancala;
 
 public class Bowl extends BoardElement {
 	
-	//public Bowl(Player owner) {
-	//	this.Stones = 4;
-	//	this.Owner = owner;
-	//}
-	
-	//public Bowl(int stones, Player owner) {
-	//	this.Stones = stones;
-	//	this.Owner = owner;
-	//}
-	
-	//public Bowl(Player owner, BoardElement neighbour) {
-	//	this.Stones = 4;
-	//	this.Owner = owner;
-	//	this.Neighbour = neighbour;
-	//}
-	
-	//public Bowl(int stones, Player owner, BoardElement neighbour) {
-	//	this.Stones = stones;
-	//	this.Owner = owner;
-	//	this.Neighbour = neighbour;
-	//}
-	
 	public Bowl(String name1, String name2) {
 		this(name1, name2, new int[] {});
 	}

@@ -48,8 +48,7 @@ public class Player {
 	}
 	
 	public String DeclareWinner(int myPoints, int opponentPoints) {
-		this.Turn = false; //This prevents further moves being made and allows @Tests to check that the game has indeed ended.
-		this.Opponent.Turn = false;
+		this.EndGame(); //This prevents further moves being made and allows .GameOver() to check that the game has indeed ended.
 		if (myPoints > opponentPoints) {
 			return ("The game has ended! The score is " + myPoints + " - " + opponentPoints + ". Congratulations " + this.getName() + ", you've won!");
 		} else if (myPoints < opponentPoints) {
@@ -57,6 +56,11 @@ public class Player {
 		} else {
 			return ("The game has ended! The score is " + myPoints + " - " + opponentPoints + ". It's a draw!");
 		}
+	}
+	
+	private void EndGame() {
+		this.Turn = false;
+		this.Opponent.Turn = false;
 	}
 	
 	public boolean GameOver() {

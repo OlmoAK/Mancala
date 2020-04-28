@@ -44,5 +44,4 @@ public class KalahaTest {
 		assertEquals(false, bowl1.getOwner().getTurn());
 	}
 	
-	
 }
