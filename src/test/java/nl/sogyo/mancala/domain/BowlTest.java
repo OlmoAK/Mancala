@@ -19,7 +19,7 @@ public class BowlTest {
 	public void MakeMoveAfterGameEndTest() {
 		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {});
 		int test = bowl1.getStones();
-		System.out.println(bowl1.getOwner().DeclareWinner(bowl1.getNeighbour(6).getStones(), bowl1.getNeighbour(13).getStones()));
+		bowl1.getOwner().EndGame();
 		bowl1.MakeMove();
 		assertEquals(test, bowl1.getStones());
 	}

@@ -46,10 +46,10 @@ public class Kalaha extends BoardElement {
 	
 	private void MoveAgain() {
 		if (this.Neighbour.EndGameCheck() || this.getOpponentKalaha().getNeighbour().EndGameCheck()) {
-			System.out.println(this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones()));
-			// this.Owner.EndGame();
+			// System.out.println(this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones()));
+			this.Owner.EndGame();
 		} else {
-			System.out.println("You can move again, " + this.Owner.getName());
+			// System.out.println("You can move again, " + this.Owner.getName());
 		}
 	}
 	
@@ -60,8 +60,8 @@ public class Kalaha extends BoardElement {
 	
 	protected void EndTurn() {
 		if (this.Neighbour.EndGameCheck() || this.getOpponentKalaha().getNeighbour().EndGameCheck()) {
-			System.out.println(this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones()));
-			// this.Owner.EndGame();
+			// System.out.println(this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones()));
+			this.Owner.EndGame();
 		} else {
 			this.Owner.ChangeTurn();
 		}

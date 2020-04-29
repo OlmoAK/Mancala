@@ -58,9 +58,9 @@ public class Bowl extends BoardElement {
 		if (this.Owner.getTurn()) {
 			this.EmptyAndPass();
 		} else if (this.Owner.GameOver()) {
-			System.out.println("You can't make a move, because " + this.Owner.DeclareWinner(this.getOwnerKalaha().getStones(), this.getOpponentKalaha().getStones()));
+		//	System.out.println("You can't make a move, because " + this.Owner.DeclareWinner(this.getOwnerKalaha().getStones(), this.getOpponentKalaha().getStones()));
 		} else {
-			System.out.println("This bowl belongs to " + this.Owner.getName() + ", and it is " + this.Owner.getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
+		//	System.out.println("This bowl belongs to " + this.Owner.getName() + ", and it is " + this.Owner.getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 		}
 	}
 	
@@ -70,7 +70,7 @@ public class Bowl extends BoardElement {
 			this.Stones = 0;
 			this.Neighbour.AddStoneAndPass(stones);
 		} else {
-			System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+		//	System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
 		}
 	}
 	
