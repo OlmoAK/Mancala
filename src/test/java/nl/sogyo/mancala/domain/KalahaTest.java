@@ -32,9 +32,10 @@ public class KalahaTest {
 	public void GameEndTest() {
 		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {0, 0, 0, 0, 0, 1});
 		Bowl bowl6 = (Bowl) bowl1.getNeighbour(5);
+		Kalaha kalaha1 = (Kalaha) bowl1.getNeighbour(6);
 		bowl6.MakeMove();
 		assertEquals(bowl1.getOwner().getTurn(), bowl1.getNeighbour(7).getOwner().getTurn());
-		assertEquals(bowl1.getOwner(), bowl1.getWinner());
+		assertEquals(bowl1.getOwner(), kalaha1.getWinner());
 	}
 	
 	@Test

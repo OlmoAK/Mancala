@@ -2,16 +2,20 @@ package nl.sogyo.mancala;
 
 public class Kalaha extends BoardElement {
 	
+	/**Initializes a Kalaha object.
+	 * @param owner Set as this objects Owner.
+	 * @param neighbour Set as this objects Neighbour.
+	 * @return The newly initialized Kahala object.*/
 	public Kalaha(Player owner, Bowl neighbour) {
 		this.Stones = 0;
 		this.Owner = owner;
 		this.Neighbour = neighbour;
 	}
 	
-	public Kalaha(Player owner, int[] stones, Bowl firstBowl, int counter) {
+	protected Kalaha(Player owner, int[] stones, Bowl firstBowl, int bowlRowLength, int counter) {
 		this.Stones = 0;
 		this.Owner = owner;
-		this.Neighbour = new Bowl(owner.getOpponent(), stones, firstBowl, counter);
+		this.Neighbour = new Bowl(owner.getOpponent(), stones, firstBowl, bowlRowLength, counter);
 	}
 	
 	protected Kalaha getOwnerKalaha() {
@@ -71,6 +75,8 @@ public class Kalaha extends BoardElement {
 		return true;
 	}
 	
+	/**Gives the winner of the Mancala game after the game has ended, by returning the Owner of the kahala with the higher number of Stones.
+	 * @return the Owner of the kahala with the higher number of Stones, if the game is over. If the game is not over or it resulted in a draw, this returns null.*/
 	public Player getWinner() {
 		if (this.Owner.GameOver()) {
 			return this.ReturnWinner();
@@ -79,7 +85,7 @@ public class Kalaha extends BoardElement {
 		}
 	}
 	
-	protected Player ReturnWinner() {
+	private Player ReturnWinner() {
 		if (this.getStones() > this.getOpponentKalaha().getStones()) {
 			return this.Owner;
 		} else if (this.getStones() < this.getOpponentKalaha().getStones()) {
