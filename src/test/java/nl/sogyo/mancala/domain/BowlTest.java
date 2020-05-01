@@ -10,23 +10,23 @@ public class BowlTest {
 	
 	@Test
 	public void MakeMoveTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {});
+		Bowl bowl1 = new Bowl("Player 1", "Player 2");
 		bowl1.MakeMove();
 		assertEquals(0, bowl1.getStones());
 	}
 	
+	/*
 	@Test
 	public void MakeMoveAfterGameEndTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {});
-		int test = bowl1.getStones();
+		Bowl bowl1 = new Bowl("Player 1", "Player 2");
 		bowl1.getOwner().EndGame();
 		bowl1.MakeMove();
-		assertEquals(test, bowl1.getStones());
+		assertEquals(4, bowl1.getStones());
 	}
 	
 	@Test
 	public void TurnCheckTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {});
+		Bowl bowl1 = new Bowl("Player 1", "Player 2");
 		Bowl bowl7 = (Bowl) bowl1.getNeighbour(7);
 		bowl7.MakeMove();
 		assertEquals(4, bowl7.getStones());
@@ -34,32 +34,31 @@ public class BowlTest {
 	
 	@Test
 	public void CheckStonesTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {0});
+		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
 		bowl1.MakeMove();
 		assertEquals(true, bowl1.getOwner().getTurn());
 	}
+	*/
 	
 	@Test
 	public void AddAndPassTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {});
+		Bowl bowl1 = new Bowl("Player 1", "Player 2");
 		Bowl bowl2 = (Bowl) bowl1.getNeighbour();
-		int test = bowl2.getStones();
 		bowl1.MakeMove();
-		assertEquals(1, bowl2.getStones() - test);
+		assertEquals(5, bowl2.getStones());
 	}
 	
 	@Test
 	public void AddAndPassEndTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {});
+		Bowl bowl1 = new Bowl("Player 1", "Player 2");
 		Bowl bowl6 = (Bowl) bowl1.getNeighbour(5);
-		int test = bowl6.getStones();
 		bowl1.MakeMove();
-		assertEquals(0, bowl6.getStones() - test);
+		assertEquals(4, bowl6.getStones());
 	}
 	
 	@Test
 	public void EmptyOppositesTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {1,0});
+		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {1, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
 		bowl1.MakeMove();
 		assertEquals(0, bowl1.getNeighbour(11).getStones());
 	}

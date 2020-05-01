@@ -5,17 +5,17 @@ public class Kalaha extends BoardElement {
 	/**Initializes a Kalaha object.
 	 * @param owner Set as this objects Owner.
 	 * @param neighbour Set as this objects Neighbour.
-	 * @return The newly initialized Kahala object.*/
+	 * @return The newly initialized Kalaha object.*/
 	public Kalaha(Player owner, Bowl neighbour) {
 		this.Stones = 0;
 		this.Owner = owner;
 		this.Neighbour = neighbour;
 	}
 	
-	protected Kalaha(Player owner, int[] stones, Bowl firstBowl, int bowlRowLength, int counter) {
+	protected Kalaha(Player owner, int[] stones, Bowl firstBowl, int counter) {
 		this.Stones = 0;
 		this.Owner = owner;
-		this.Neighbour = new Bowl(owner.getOpponent(), stones, firstBowl, bowlRowLength, counter);
+		this.Neighbour = new Bowl(owner.getOpponent(), stones, firstBowl, counter);
 	}
 	
 	protected Kalaha getOwnerKalaha() {
@@ -26,8 +26,8 @@ public class Kalaha extends BoardElement {
 		return this.Neighbour.getOwnerKalaha();
 	}
 	
-	protected Bowl getOpposite(int counter, boolean tag) {
-		return this.Neighbour.getOpposite(counter, !tag);
+	protected BoardElement getOpposite() {
+		return this;
 	}
 	
 	protected void AddStoneAndPass(int stones) {
@@ -50,10 +50,7 @@ public class Kalaha extends BoardElement {
 	
 	private void MoveAgain() {
 		if (this.Neighbour.EndGameCheck() || this.getOpponentKalaha().getNeighbour().EndGameCheck()) {
-			// System.out.println(this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones()));
 			this.Owner.EndGame();
-		} else {
-			// System.out.println("You can move again, " + this.Owner.getName());
 		}
 	}
 	
@@ -64,7 +61,6 @@ public class Kalaha extends BoardElement {
 	
 	protected void EndTurn() {
 		if (this.Neighbour.EndGameCheck() || this.getOpponentKalaha().getNeighbour().EndGameCheck()) {
-			// System.out.println(this.Owner.DeclareWinner(this.getStones(), this.getOpponentKalaha().getStones()));
 			this.Owner.EndGame();
 		} else {
 			this.Owner.ChangeTurn();
@@ -75,17 +71,9 @@ public class Kalaha extends BoardElement {
 		return true;
 	}
 	
-	/**Gives the winner of the Mancala game after the game has ended, by returning the Owner of the kahala with the higher number of Stones.
-	 * @return the Owner of the kahala with the higher number of Stones, if the game is over. If the game is not over or it resulted in a draw, this returns null.*/
-	public Player getWinner() {
-		if (this.Owner.GameOver()) {
-			return this.ReturnWinner();
-		} else {
-			return null;
-		}
-	}
-	
-	private Player ReturnWinner() {
+	/**Gives the player of the Mancala game that is currently n the lead. by returning the Owner of the kalaha with the higher number of Stones.
+	 * @return The Owner of the kalaha with the higher number of Stones. If both kalaha have the same number of stones, this returns null.*/
+	public Player getLeadingPlayer() {
 		if (this.getStones() > this.getOpponentKalaha().getStones()) {
 			return this.Owner;
 		} else if (this.getStones() < this.getOpponentKalaha().getStones()) {

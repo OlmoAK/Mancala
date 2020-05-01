@@ -1,6 +1,6 @@
 package nl.sogyo.mancala;
 
-/**Abstract super-class for both Bowl and Kahala, making it possible for their Neighbour variable to point to objects of either class.*/
+/**Abstract super-class for both Bowl and Kalaha, making it possible for their Neighbour variable to point to objects of either class.*/
 public abstract class BoardElement{
 	
 	protected int Stones; // Implementing the (shared) variables and their getter methods.
@@ -37,7 +37,7 @@ public abstract class BoardElement{
 	
 	protected abstract Kalaha getOpponentKalaha();
 	
-	protected abstract Bowl getOpposite(int counter, boolean tag);
+	protected abstract BoardElement getOpposite();
 	
 	protected abstract void AddStoneAndPass(int stones);
 	

@@ -5,11 +5,10 @@ import java.util.Scanner;
 /**A simple GUI that runs the Mancala game locally.*/
 public class Mancala {
 	
-	
 	public static void main(String[] args) {
 		
 		while (true) {
-			Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {}); // Initializing the board.
+			Bowl bowl1 = new Bowl("Player 1", "Player 2"); // Initializing the board.
 			/*
 			Old initialization of unused variables.
 			Player player1 = bowl1.getOwner();
@@ -42,6 +41,7 @@ public class Mancala {
 				} else if (!bowl1.getOwner().getTurn() && bowl1.getOwner().getOpponent().getTurn()) { // If the turn changed, notify the user which players turn it now is.
 					System.out.print("It is now " + bowl1.getOwner().getOpponent().getName() + "'s turn.");
 				} else { // If there was some kind if initialization error, throw an error.
+					s.close();
 					throw new IllegalStateException("Both Players were initialized to the same turn states, while they need to be opposite!");
 				}
 				oldTurn = bowl1.getOwner().getTurn();
@@ -54,57 +54,65 @@ public class Mancala {
 						System.out.println("This bowl belongs to " + bowl1.getOwner().getName() + ", and it is " + bowl1.getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getStones() == 0) { // Give notice to user if he tries to make a move from a bowl that is empty, so that he know that his move failed.
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						bowl1.MakeMove(); //Make corresponding move.
 					}
-					bowl1.MakeMove(); //Make corresponding move.
 				} else if (("bowl 2").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour().getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour().getOwner().getName() + ", and it is " + bowl1.getNeighbour().getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour().getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour()).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour()).MakeMove();
 				} else if (("bowl 3").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour(2).getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(2).getOwner().getName() + ", and it is " + bowl1.getNeighbour(2).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour(2).getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour(2)).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour(2)).MakeMove();
 				} else if (("bowl 4").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour(3).getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(3).getOwner().getName() + ", and it is " + bowl1.getNeighbour(3).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour(3).getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour(3)).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour(3)).MakeMove();
 				} else if (("bowl 5").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour(4).getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(4).getOwner().getName() + ", and it is " + bowl1.getNeighbour(4).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour(4).getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour(4)).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour(4)).MakeMove();
 				} else if (("bowl 6").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour(5).getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(5).getOwner().getName() + ", and it is " + bowl1.getNeighbour(5).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour(5).getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour(5)).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour(5)).MakeMove();
 				} else if (("bowl 7").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour(7).getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(7).getOwner().getName() + ", and it is " + bowl1.getNeighbour(7).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour(7).getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour(7)).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour(7)).MakeMove();
 				} else if (("bowl 8").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour(8).getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(8).getOwner().getName() + ", and it is " + bowl1.getNeighbour(8).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour(8).getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour(8)).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour(8)).MakeMove();
 				} else if (("bowl 9").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour(9).getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(9).getOwner().getName() + ", and it is " + bowl1.getNeighbour(9).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
@@ -117,27 +125,30 @@ public class Mancala {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(10).getOwner().getName() + ", and it is " + bowl1.getNeighbour(10).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour(10).getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour(10)).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour(10)).MakeMove();
 				} else if (("bowl 11").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour(11).getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(11).getOwner().getName() + ", and it is " + bowl1.getNeighbour(11).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour(11).getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour(11)).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour(11)).MakeMove();
 				} else if (("bowl 12").equalsIgnoreCase(input)) {
 					if (!bowl1.getNeighbour(12).getOwner().getTurn()) {
 						System.out.println("This bowl belongs to " + bowl1.getNeighbour(12).getOwner().getName() + ", and it is " + bowl1.getNeighbour(12).getOwner().getOpponent().getName() + "'s turn right now. Please make a move using one of your own bowls.");
 					} else if (bowl1.getNeighbour(12).getStones() == 0) {
 						System.out.println("This bowl is empty, please pick one of your bowls with stones in it to make a move.");
+					} else {
+						((Bowl) bowl1.getNeighbour(12)).MakeMove();
 					}
-					((Bowl) bowl1.getNeighbour(12)).MakeMove();
-				} else if (("quite").equalsIgnoreCase(input)) { //Shut down command to break the while loop and end the program.
+				} else if (("quite").equalsIgnoreCase(input)) { //Shut down command to end the game.
 					System.out.println("Quiting the game.");
-					break;
+					bowl1.getOwner().EndGame();
 				} else { //If user command is not recognized, print a warning for the user and include a list of available user commands.
-					System.out.println("Command not recognized. Please specify one of your bowls by their number x (starting in the lower left and going counter-clockwise) as 'Bowl x' or input 'Quite' to quite the game.");
+					System.out.println("Command not recognized. Please specify one of your bowls by their number 'x' between 1 and 12 (starting in the lower left and going counter-clockwise) as 'Bowl x' or input 'Quite' to quite the game.");
 				}
 				
 			}
