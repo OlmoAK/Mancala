@@ -25,32 +25,33 @@ public class Bowl extends BoardElement {
 	public Bowl(String name1, String name2, int[] stones) { //Starting constructor for initializing the board.
 		if ((stones.length < 2) || (stones.length % 2 == 1)) {
 			throw new IllegalArgumentException("The length of the stones array is " + stones.length + ", but must be a even number larger then 1.");
-		}
-		this.Owner = new Player(name1, name2); // Calls constructor for both opposing players.
-		if (stones[0] < 0) {
+		} else if (stones[0] < 0) {
 			throw new IllegalArgumentException("The value one of the elements of the stones array (stones[0]) is " + stones[0] + ", which is a negative value. All elements of the stones array must be 0 or larger.");
-		}
-		this.Stones = stones[0];
-		if (stones.length > 2) {
-			this.Neighbour = new Bowl(this.Owner, stones, this, 1); // Calls protected constructor to continue construction of the neighbour chain, passes itself as argument to be used as final kalaha's neighbour to complete neighbour chain.
 		} else {
-			this.Neighbour = new Kalaha(this.Owner, stones, this, 1); //Calls the protected Kalaha constructor to continue construction of the neighbour chain, passes itself as argument to be used as final kalaha's neighbour to complete neighbour chain.
+			this.Owner = new Player(name1, name2); // Calls constructor for both opposing players.
+			this.Stones = stones[0];
+			if (stones.length > 2) {
+				this.Neighbour = new Bowl(this.Owner, stones, this, 1); // Calls protected constructor to continue construction of the neighbour chain, passes itself as argument to be used as final kalaha's neighbour to complete neighbour chain.
+			} else {
+				this.Neighbour = new Kalaha(this.Owner, stones, this, 1); //Calls the protected Kalaha constructor to continue construction of the neighbour chain, passes itself as argument to be used as final kalaha's neighbour to complete neighbour chain.
+			}
 		}
 	}
 	
 	protected Bowl(Player owner, int[] stones, Bowl firstBowl, int counter) {
-		this.Owner = owner;
 		if (stones[counter] < 0) {
 			throw new IllegalArgumentException("The value one of the elements of the stones array (stones[" + counter + "]) is " + stones[counter] + ", which is a negative value. All elements of the stones array must be 0 or larger.");
-		}
-		this.Stones = stones[counter];
-		counter++;
-		if (counter == stones.length/2) {
-			this.Neighbour = new Kalaha(owner, stones, firstBowl, counter);
-		} else if (counter == stones.length) {
-			this.Neighbour = new Kalaha(owner, firstBowl);
 		} else {
-			this.Neighbour = new Bowl(owner, stones, firstBowl, counter);
+			this.Owner = owner;
+			this.Stones = stones[counter];
+			counter++;
+			if (counter == stones.length/2) {
+				this.Neighbour = new Kalaha(owner, stones, firstBowl, counter);
+			} else if (counter == stones.length) {
+				this.Neighbour = new Kalaha(owner, firstBowl);
+			} else {
+				this.Neighbour = new Bowl(owner, stones, firstBowl, counter);
+			}
 		}
 	}
 	
