@@ -20,9 +20,7 @@ public class Player {
 		return this.Opponent;
 	}
 	
-	/**Initializes a Player object, as well as a second Player object with both set as each other's Opponent.
-	 * @param name1 Set as the Name of the first Player object.
-	 * @param name2 Set as the Name of the Second Player object.
+	/**Initializes a Player object (with .Name = "Player 1"), as well as a second Player object (with .Name = "Player 2") with both set as each other's Opponent.
 	 * @return The first, newly initialized Player object, with the second newly initialized Player object set as it's Opponent.*/
 	public Player() {
 		this.Name = "Player 1";
