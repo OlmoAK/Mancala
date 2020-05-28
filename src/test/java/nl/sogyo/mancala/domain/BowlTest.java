@@ -10,7 +10,7 @@ public class BowlTest {
 	
 	@Test
 	public void MakeMoveTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2");
+		Bowl bowl1 = new Bowl();
 		bowl1.MakeMove();
 		assertEquals(0, bowl1.getStones());
 	}
@@ -42,7 +42,7 @@ public class BowlTest {
 	
 	@Test
 	public void AddAndPassTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2");
+		Bowl bowl1 = new Bowl();
 		Bowl bowl2 = (Bowl) bowl1.getNeighbour();
 		bowl1.MakeMove();
 		assertEquals(5, bowl2.getStones());
@@ -50,7 +50,7 @@ public class BowlTest {
 	
 	@Test
 	public void AddAndPassEndTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2");
+		Bowl bowl1 = new Bowl();
 		Bowl bowl6 = (Bowl) bowl1.getNeighbour(5);
 		bowl1.MakeMove();
 		assertEquals(4, bowl6.getStones());
@@ -58,7 +58,7 @@ public class BowlTest {
 	
 	@Test
 	public void EmptyOppositesTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {1, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
+		Bowl bowl1 = new Bowl(new int[] {1, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
 		bowl1.MakeMove();
 		assertEquals(0, bowl1.getNeighbour(11).getStones());
 	}

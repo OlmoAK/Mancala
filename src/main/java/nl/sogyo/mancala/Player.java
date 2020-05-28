@@ -24,16 +24,16 @@ public class Player {
 	 * @param name1 Set as the Name of the first Player object.
 	 * @param name2 Set as the Name of the Second Player object.
 	 * @return The first, newly initialized Player object, with the second newly initialized Player object set as it's Opponent.*/
-	public Player(String name1, String name2) {
-		this.Name = name1;
+	public Player() {
+		this.Name = "Player 1";
 		this.Turn = true;
-		this.Opponent = new Player(name2);
-		this.Opponent.Opponent = this;
+		this.Opponent = new Player(this);
 	}
 	
-	private Player(String name) {
-		this.Name = name;
+	private Player(Player opponent) {
+		this.Name = "Player 2";
 		this.Turn = false;
+		this.Opponent = opponent;
 	}
 	
 	/**Changes the Turn of both the Player object from which this method was called, as well as the Turn of that Player object's Opponent, by applying a boolean NOT operation to both Turn variables.*/

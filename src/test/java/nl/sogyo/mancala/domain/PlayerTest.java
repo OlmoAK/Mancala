@@ -11,14 +11,14 @@ public class PlayerTest {
 	
 	@Test
 	public void ChangeTurnTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2");
+		Bowl bowl1 = new Bowl();
 		bowl1.getOwner().ChangeTurn();
 		assertEquals(true, bowl1.getOwner().getOpponent().getTurn());
 	}
 	
 	@Test
 	public void DeclareWinnerTest() {        
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {0, 0, 0, 0, 1, 0, 1, 0, 4, 4, 4, 4});
+		Bowl bowl1 = new Bowl(new int[] {0, 0, 0, 0, 1, 0, 1, 0, 4, 4, 4, 4});
 		Kalaha kalaha1 = (Kalaha) bowl1.getNeighbour(6);
 		Bowl bowl7 = (Bowl) bowl1.getNeighbour(7);
 		bowl1.getOwner().ChangeTurn();
@@ -29,7 +29,7 @@ public class PlayerTest {
 	
 	@Test
 	public void DeclareDrawTest() {        
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1});
+		Bowl bowl1 = new Bowl(new int[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1});
 		Bowl bowl6 = (Bowl) bowl1.getNeighbour(5);
 		Kalaha kalaha1 = (Kalaha) bowl1.getNeighbour(6);
 		Bowl bowl12 = (Bowl) bowl1.getNeighbour(12);

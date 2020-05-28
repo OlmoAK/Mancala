@@ -9,8 +9,8 @@ public class Bowl extends BoardElement {
 	 * @param name1 Will be passed to the constructor for this bowls Owner, and is set as that first player's Name.
 	 * @param name2 Will be passed through the constructor for this bowls Owner to the constructor of the second player as the first player's Opponent, and is set as that second player's Name.
 	 * @return The first bowl of the newly initialized Mancala board.*/
-	public Bowl(String name1, String name2) { // Basic constructor that passes the default stones array to the larger constructor.
-		this(name1, name2, new int[] {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
+	public Bowl() { // Basic constructor that passes the default stones array to the larger constructor.
+		this(new int[] {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
 	}
 	
 	/**Starts the initialization of the Mancala board by initializing the first bowl of the Mancala board.
@@ -22,13 +22,13 @@ public class Bowl extends BoardElement {
 	 * @param name2 Will be passed through the constructor for this bowls Owner to the constructor of the second player as the first player's Opponent, and is set as that second player's Name.
 	 * @param stones The length of this array determines the total (even) number of bowls initiated. If the array's length is not an even number larger then 1, an error occurs. The first value of this array (stones[0]) is set as this bowls (number of) Stones, and the array is passed on to the Neighbour's constructor to use it's subsequent values to set the following bowls (number of) Stones as. If the value of any of these values in the array is negative, an error occurs.
 	 * @return The first bowl of the newly initialized Mancala board.*/
-	public Bowl(String name1, String name2, int[] stones) { //Starting constructor for initializing the board.
+	public Bowl(int[] stones) { //Starting constructor for initializing the board.
 		if ((stones.length < 2) || (stones.length % 2 == 1)) {
 			throw new IllegalArgumentException("The length of the stones array is " + stones.length + ", but must be a even number larger then 1.");
 		} else if (stones[0] < 0) {
 			throw new IllegalArgumentException("The value one of the elements of the stones array (stones[0]) is " + stones[0] + ", which is a negative value. All elements of the stones array must be 0 or larger.");
 		} else {
-			this.Owner = new Player(name1, name2); // Calls constructor for both opposing players.
+			this.Owner = new Player(); // Calls constructor for both opposing players.
 			this.Stones = stones[0];
 			if (stones.length > 2) {
 				this.Neighbour = new Bowl(this.Owner, stones, this, 1); // Calls protected constructor to continue construction of the neighbour chain, passes itself as argument to be used as final kalaha's neighbour to complete neighbour chain.

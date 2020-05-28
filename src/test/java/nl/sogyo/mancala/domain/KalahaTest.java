@@ -11,7 +11,7 @@ public class KalahaTest {
 
 	@Test
 	public void AddOppositesTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {1, 0, 4, 4});
+		Bowl bowl1 = new Bowl(new int[] {1, 0, 4, 4});
 		Kalaha kalaha1 = (Kalaha) bowl1.getNeighbour(2);
 		bowl1.MakeMove();
 		assertEquals(5, kalaha1.getStones());
@@ -19,7 +19,7 @@ public class KalahaTest {
 	
 	@Test
 	public void MoveAgainTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2");
+		Bowl bowl1 = new Bowl();
 		Bowl bowl3 = (Bowl) bowl1.getNeighbour(2);
 		bowl3.MakeMove();
 		assertEquals(true, bowl1.getOwner().getTurn());
@@ -27,7 +27,7 @@ public class KalahaTest {
 	
 	@Test
 	public void GameEndTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4});
+		Bowl bowl1 = new Bowl(new int[] {0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4});
 		Bowl bowl6 = (Bowl) bowl1.getNeighbour(5);
 		Kalaha kalaha1 = (Kalaha) bowl1.getNeighbour(6);
 		bowl6.MakeMove();
@@ -37,7 +37,7 @@ public class KalahaTest {
 	
 	@Test
 	public void EndTurnTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2");
+		Bowl bowl1 = new Bowl();
 		bowl1.MakeMove();
 		assertEquals(false, bowl1.getOwner().getTurn());
 	}

@@ -8,7 +8,7 @@ public class Mancala {
 	public static void main(String[] args) {
 		
 		while (true) {
-			Bowl bowl1 = new Bowl("Player 1", "Player 2"); // Initializing the board.
+			Bowl bowl1 = new Bowl(); // Initializing the board.
 			/*
 			Old initialization of unused variables.
 			Player player1 = bowl1.getOwner();
