@@ -6,8 +6,6 @@ public class Bowl extends BoardElement {
 	 * It calls the constructor for the first player as its Owner, which in turn calls a constructor for the second player as the first players Opponent.
 	 * It also calls a constructor for the next bowl as it's Neighbour.
 	 * These will in turn will call the constructor for the other board elements, constructing a total of 6 bowls on each players side of the board which will all having set their (number of) Stones to the default value of 4, while passing this first bowl along as a parameter to be set as the Neighbour for the second kalaha.
-	 * @param name1 Will be passed to the constructor for this bowls Owner, and is set as that first player's Name.
-	 * @param name2 Will be passed through the constructor for this bowls Owner to the constructor of the second player as the first player's Opponent, and is set as that second player's Name.
 	 * @return The first bowl of the newly initialized Mancala board.*/
 	public Bowl() { // Basic constructor that passes the default stones array to the larger constructor.
 		this(new int[] {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
@@ -18,8 +16,6 @@ public class Bowl extends BoardElement {
 	 * It also calls a constructor for the next bowl or the first kalaha (if the bowl row is only 1 bowl long) as it's Neighbour.
 	 * These will in turn will call the constructor for the other board elements, while passing this first bowl along as a parameter to be set as the Neighbour for the second kalaha (which is the last board-element).
 	 * In total an even number of bowls are constructed (one row on each players side of the board, each of the same length) and two kalaha's (one for each player).
-	 * @param name1 Will be passed to the constructor for this bowls Owner, and is set as that first player's Name.
-	 * @param name2 Will be passed through the constructor for this bowls Owner to the constructor of the second player as the first player's Opponent, and is set as that second player's Name.
 	 * @param stones The length of this array determines the total (even) number of bowls initiated. If the array's length is not an even number larger then 1, an error occurs. The first value of this array (stones[0]) is set as this bowls (number of) Stones, and the array is passed on to the Neighbour's constructor to use it's subsequent values to set the following bowls (number of) Stones as. If the value of any of these values in the array is negative, an error occurs.
 	 * @return The first bowl of the newly initialized Mancala board.*/
 	public Bowl(int[] stones) { //Starting constructor for initializing the board.

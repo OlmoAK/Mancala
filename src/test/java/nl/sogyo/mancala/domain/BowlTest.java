@@ -18,7 +18,7 @@ public class BowlTest {
 	/*
 	@Test
 	public void MakeMoveAfterGameEndTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2");
+		Bowl bowl1 = new Bowl();
 		bowl1.getOwner().EndGame();
 		bowl1.MakeMove();
 		assertEquals(4, bowl1.getStones());
@@ -26,7 +26,7 @@ public class BowlTest {
 	
 	@Test
 	public void TurnCheckTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2");
+		Bowl bowl1 = new Bowl();
 		Bowl bowl7 = (Bowl) bowl1.getNeighbour(7);
 		bowl7.MakeMove();
 		assertEquals(4, bowl7.getStones());
@@ -34,7 +34,7 @@ public class BowlTest {
 	
 	@Test
 	public void CheckStonesTest() {
-		Bowl bowl1 = new Bowl("Player 1", "Player 2", new int[] {0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
+		Bowl bowl1 = new Bowl(new int[] {0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
 		bowl1.MakeMove();
 		assertEquals(true, bowl1.getOwner().getTurn());
 	}
